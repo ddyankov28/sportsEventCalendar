@@ -4,14 +4,15 @@ import { HeaderComponent } from "./header/header.component";
 import { CalendarComponent } from './calendar/calendar.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { AboutProjectComponent } from './about-project/about-project.component';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, CalendarComponent, AboutMeComponent, AboutProjectComponent],
+  imports: [RouterOutlet, HeaderComponent, CalendarComponent, AboutMeComponent, AboutProjectComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'sportsEventCalendar';
+  title = 'Sports Event Calendar';
 }
