@@ -30,6 +30,8 @@ export class CalendarComponent {
   }
 
   loadEvents() {
+    this.eventsByDate = {};
+
     eventsData.events.forEach(event => {
       const eventDate = new Date(event.date);
       if (eventDate.getFullYear() === this.currentYear && eventDate.getMonth() === this.displayedMonthIndex) {
@@ -39,7 +41,6 @@ export class CalendarComponent {
         }
         const eventDetails = `${event.teams} vs ${event.eventType} at ${event.time}`;
         this.eventsByDate[day].push(eventDetails);
-        console.log(this.eventsByDate[day]);
       }
     });
   }
@@ -101,5 +102,8 @@ export class CalendarComponent {
   }
   hasEvent(day: number): boolean {
     return this.eventsByDate[day] && this.eventsByDate[day].length > 0;
+  }
+  getEventDetails(day: number): string {
+    return this.eventsByDate[day].join('\n');
   }
 }
