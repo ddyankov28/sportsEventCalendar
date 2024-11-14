@@ -1,22 +1,44 @@
 {
   "events": [
     {
+      "id": 1,
       "date": "2024-11-18",
       "time": "18:30",
       "eventType": "Football",
-      "teams": "Salzburg vs. Sturm"
+      "teams": "Salzburg vs. Sturm",
+      "location": "Red Bull Arena"
     },
     {
+      "id": 2,
       "date": "2024-11-23",
       "time": "09:45",
       "eventType": "Ice Hockey",
-      "teams": "KAC vs. Capitals"
+      "teams": "KAC vs. Capitals",
+      "location": "Stadthalle"
     },
     {
+      "id": 3,
       "date": "2024-11-14",
       "time": "09:45",
       "eventType": "Basketball",
-      "teams": "Lakers vs. Celtics"
+      "teams": "Lakers vs. Celtics",
+      "location": "Staples Center"
+    },
+    {
+      "id": 4,
+      "date": "2024-11-14",
+      "time": "19:45",
+      "eventType": "Basketball",
+      "teams": "Warriors vs. Suns",
+      "location": "Chase Center"
+    },
+    {
+      "id": 5,
+      "date": "2024-11-14",
+      "time": "23:45",
+      "eventType": "Basketball",
+      "teams": "Heat vs. Bulls",
+      "location": "American Airlines Arena"
     }
   ]
 }

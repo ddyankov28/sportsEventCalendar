@@ -12,7 +12,7 @@
   
   th, td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid black;
     width: 14%;
     height: 50px;
   }
@@ -52,10 +52,10 @@
   
   @media (max-width: 768px) {
     .event-marker {
-      top: 2px;  /* Adjust top position on smaller screens */
-      right: 2px; /* Adjust right position on smaller screens */
-      width: 8px; /* Smaller dot on smaller screens */
-      height: 8px; /* Smaller dot on smaller screens */
+      top: 2px;
+      right: 2px;
+      width: 8px;
+      height: 8px;
     }
   }
 
@@ -69,4 +69,8 @@
     100% {
       opacity: 1;
     }
+  }
+
+  .event-marker{
+    cursor: pointer;
   }

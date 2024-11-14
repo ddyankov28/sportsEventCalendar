@@ -15,7 +15,12 @@
           <td *ngFor="let day of week" [ngClass]="{'current-day': isCurrentDay(day)}">
             <div class="day-cell">
               <span *ngIf="day">{{ day }}</span>
-              <span *ngIf="hasEvent(day)" class="event-marker"><i class="bi bi-calendar-check"></i></span>
+              <div *ngIf="hasEvent(day)" class="event-marker">
+                <!-- Displaying a single marker for the day -->
+                <span (click)="goToEventDetail(day)" class="event-icon">
+                  <i class="bi bi-calendar-check"></i>
+                </span>
+              </div>              
             </div>  
           </td>
         </tr>
