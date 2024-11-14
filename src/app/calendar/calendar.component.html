@@ -1,1 +1,22 @@
-<p>calendar works!</p>
+<div class="calendar">
+  <div class="calendar-header d-flex align-items-center justify-content-center">
+    <button class="btn btn-link" (click)="changeMonth(-1)">&#9664;</button>
+    <h2 class="mb-0">{{ currentMonth }} {{ currentYear }}</h2>
+    <button class="btn btn-link" (click)="changeMonth(1)">&#9654;</button>
+  </div>
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let week of getCalendarWeeks()">
+          <td *ngFor="let day of week">
+            <span *ngIf="day">{{ day }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

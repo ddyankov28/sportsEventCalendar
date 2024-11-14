@@ -1,0 +1,29 @@
+.calendar {
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 14%;
+    height: 50px;
+  }
+  
+  td span {
+    display: block;
+  }
+
+  .btn-link {
+    font-size: 1.5rem;
+    color: inherit;
+    text-decoration: none;
+  }
+  
