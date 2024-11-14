@@ -1,3 +1,13 @@
 .text-center {
     background: linear-gradient(to right, blue, red);
 }
+
+footer .fab {
+    font-size: 2rem;
+    transition: transform 0.3s;
+  }
+  
+  footer .fab:hover {
+    transform: scale(1.5);
+  }
+  

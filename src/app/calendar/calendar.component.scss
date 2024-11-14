@@ -27,3 +27,43 @@
     text-decoration: none;
   }
   
+
+
+
+  .day-cell {
+    position: relative;
+    text-align: center;
+    height: 40px; /* Keeps the cell size as is */
+  }
+  
+  .event-marker {
+    position: absolute;
+    top: 1px; /* Position the dot on the top-right corner */
+    right: 1px;
+    width: 20px; /* Increased the size of the dot */
+    height: 20px; /* Increased the size of the dot */
+    border-radius: 50%;
+    animation: blink 1s infinite; /* Make the dot blink */
+    transition: top 0.2s ease, right 0.2s ease; 
+  }
+  
+  @media (max-width: 768px) {
+    .event-marker {
+      top: 2px;  /* Adjust top position on smaller screens */
+      right: 2px; /* Adjust right position on smaller screens */
+      width: 8px; /* Smaller dot on smaller screens */
+      height: 8px; /* Smaller dot on smaller screens */
+    }
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

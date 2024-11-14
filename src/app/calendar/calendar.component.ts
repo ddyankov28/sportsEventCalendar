@@ -1,6 +1,7 @@
 import { Component , OnInit} from '@angular/core';
-import eventsData from '../../assets/sportData.json.json';
+import eventsData from '../../assets/sportData.json';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-calendar',
   standalone: true,
@@ -8,6 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss'
 })
+
 export class CalendarComponent {
   currentMonth: string = '';
   currentYear: number = 0;
@@ -15,14 +17,31 @@ export class CalendarComponent {
   daysInMonth: number[] = [];
   firstDayOfMonth: number = 0;
   daysOfWeek: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  eventsByDate: { [key: number]: string[] } = {};
 
   constructor() { }
-
+  
   ngOnInit(): void {
     const today = new Date();
     this.currentYear = today.getFullYear();
     this.displayedMonthIndex = today.getMonth(); // Set initial displayed month index to current month
     this.generateCalendar();
+    this.loadEvents();
+  }
+
+  loadEvents() {
+    eventsData.events.forEach(event => {
+      const eventDate = new Date(event.date);
+      if (eventDate.getFullYear() === this.currentYear && eventDate.getMonth() === this.displayedMonthIndex) {
+        const day = eventDate.getDate();
+        if (!this.eventsByDate[day]) {
+          this.eventsByDate[day] = [];
+        }
+        const eventDetails = `${event.teams} vs ${event.eventType} at ${event.time}`;
+        this.eventsByDate[day].push(eventDetails);
+        console.log(this.eventsByDate[day]);
+      }
+    });
   }
 
   generateCalendar() {
@@ -76,7 +95,11 @@ export class CalendarComponent {
       this.currentYear += 1;
     }
 
-    // Regenerate the calendar for the updated month and year
+    this.loadEvents();
     this.generateCalendar();
+
+  }
+  hasEvent(day: number): boolean {
+    return this.eventsByDate[day] && this.eventsByDate[day].length > 0;
   }
 }

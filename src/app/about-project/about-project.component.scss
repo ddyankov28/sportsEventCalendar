@@ -1,3 +1,13 @@
 *{
     margin-left: 5px;
 }
+
+ul:last-of-type {
+  padding-bottom: 40px;
+}
+
+@media (max-width: 767px) { 
+    ul:last-of-type {
+      padding-bottom: 80px;
+    }
+  }

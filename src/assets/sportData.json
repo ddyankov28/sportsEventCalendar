@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "date": "2024-11-18",
+      "time": "18:30",
+      "eventType": "Football",
+      "teams": "Salzburg vs. Sturm"
+    },
+    {
+      "date": "2024-11-23",
+      "time": "09:45",
+      "eventType": "Ice Hockey",
+      "teams": "KAC vs. Capitals"
+    }
+  ]
+}
