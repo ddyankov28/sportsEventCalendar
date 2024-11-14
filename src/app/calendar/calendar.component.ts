@@ -106,4 +106,8 @@ export class CalendarComponent {
   getEventDetails(day: number): string {
     return this.eventsByDate[day].join('\n');
   }
+  isCurrentDay(day: number): boolean {
+    const today = new Date();
+    return day === today.getDate() && this.displayedMonthIndex === today.getMonth() && this.currentYear === today.getFullYear();
+  }
 }

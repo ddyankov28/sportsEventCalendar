@@ -28,7 +28,11 @@
   }
   
 
-
+  .current-day {
+    background: linear-gradient(to right, blue, red);  /* Or any color you prefer */
+    color: white;  /* Change text color to improve visibility */
+  }
+  
 
   .day-cell {
     position: relative;
@@ -43,8 +47,7 @@
     width: 20px; /* Increased the size of the dot */
     height: 20px; /* Increased the size of the dot */
     border-radius: 50%;
-    animation: blink 1s infinite; /* Make the dot blink */
-    transition: top 0.2s ease, right 0.2s ease; 
+    animation: blink 1s infinite; /* Make the dot blink */  
   }
   
   @media (max-width: 768px) {

@@ -11,6 +11,12 @@
       "time": "09:45",
       "eventType": "Ice Hockey",
       "teams": "KAC vs. Capitals"
+    },
+    {
+      "date": "2024-11-14",
+      "time": "09:45",
+      "eventType": "Basketball",
+      "teams": "Lakers vs. Celtics"
     }
   ]
 }
