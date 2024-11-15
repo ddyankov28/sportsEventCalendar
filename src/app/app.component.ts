@@ -5,7 +5,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { AboutProjectComponent } from './about-project/about-project.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { injectSpeedInsights } from '@vercel/speed-insights';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -16,3 +16,6 @@ import { FooterComponent } from './footer/footer.component';
 export class AppComponent {
   title = 'Sports Event Calendar';
 }
+
+
+injectSpeedInsights();
