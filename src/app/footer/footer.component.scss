@@ -1,5 +1,8 @@
-.text-center {
-    background: linear-gradient(to right, blue, red);
+footer {
+  margin-top: auto; /* Push the footer to the bottom when content doesn't fill the page */
+  padding: 15px 0;
+  background: linear-gradient(to right, blue, red);
+  color: white;
 }
 
 footer .fab {

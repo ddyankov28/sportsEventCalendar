@@ -8,5 +8,6 @@ export const routes: Routes = [
     {path: 'about-me', component: AboutMeComponent},
     {path: 'about-project', component: AboutProjectComponent},
     {path: '', component: CalendarComponent},
-    {path: 'events/:date', component: EventDetailsComponent}
+    {path: 'events/:date', component: EventDetailsComponent},
+    { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

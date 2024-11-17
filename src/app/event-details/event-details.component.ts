@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import eventsData from '../../assets/sportData.json';
 import { CommonModule } from '@angular/common';
 
@@ -23,7 +23,7 @@ export class EventDetailsComponent implements OnInit{
   date: string = '';
   events: Event[] = [];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const date = this.route.snapshot.paramMap.get('date');
@@ -38,5 +38,8 @@ export class EventDetailsComponent implements OnInit{
     this.events = eventsData.events.filter(event => event.date === this.date);
     console.log('Filtered events:', this.events);
   }
-  
+
+  goBack(): void {
+    this.router.navigate(['']);
+  }
 }
