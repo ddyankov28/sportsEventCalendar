@@ -1,35 +1,39 @@
 <div class="calendar">
-  <div class="calendar-header d-flex align-items-center justify-content-center">
-
-    <button class="btn btn-link" (click)="changeMonth(-1)">
+  <div class="calendar-header d-flex">
+    
+    <button class="btn" (click)="changeMonth(-1)">
       <i class="fa-solid fa-circle-chevron-left"></i>
     </button>
     <h2 class="mb-0 mx-3 flex-grow-1 text-center">{{ currentMonth }} {{ currentYear }}</h2>
-    <button class="btn btn-link" (click)="changeMonth(1)">
+    <button class="btn" (click)="changeMonth(1)">
       <i class="fa-solid fa-circle-chevron-right"></i>
     </button>
+    
+  </div>
 
-  </div>
-    <table>
-      <thead>
-        <tr>
-          <th *ngFor="let day of daysOfWeek">{{ day }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let week of getCalendarWeeks()">
-          <td *ngFor="let day of week" [ngClass]="{'current-day': isCurrentDay(day)}">
-            <div class="day-cell">
-              <span *ngIf="day">{{ day }}</span>
-              <div *ngIf="hasEvent(day)" class="event-marker">
-                <span (click)="goToEventDetail(day)" class="event-icon">
-                  <i class="bi bi-calendar-check"></i>
-                </span>
-              </div>              
-            </div>  
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- loop through the weeks of the month -->
+
+      <tr *ngFor="let week of getCalendarWeeks()">
+        <td *ngFor="let day of week" [ngClass]="{'current-day': isCurrentDay(day)}">
+          <div class="day-cell">
+            <span *ngIf="day">{{ day }}</span>
+            <div *ngIf="hasEvent(day)" class="event-marker">
+              <span (click)="goToEventDetail(day)" class="event-icon">
+                <i class="bi bi-calendar-check"></i>
+              </span>
+            </div>              
+          </div>  
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
   

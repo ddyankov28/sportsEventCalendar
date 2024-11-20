@@ -1,76 +1,69 @@
 .calendar {
     width: 100%;
-    max-width: 800px;
-    margin: 100px auto;
+    max-width: 900px;
     text-align: center;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 10px;
-    border: 1px solid black;
-    width: 14%;
-    height: 50px;
-  }
-  
-  td span {
-    display: block;
+    margin: 10px auto;
   }
 
-  .btn-link {
-    font-size: 1.5rem;
-    color: inherit;
-    text-decoration: none;
-  }
-  
+.calendar-header {
+  align-items: center;
+  margin-bottom: 60px;
+}
 
-  .current-day {
-    background: linear-gradient(to right, blue, red);  /* Or any color you prefer */
-    color: white;  /* Change text color to improve visibility */
-  }
-  
+table {
+  width: 100%;
+}
 
-  .day-cell {
-    position: relative;
-    text-align: center;
-    height: 40px; /* Keeps the cell size as is */
-  }
-  
+th, td {
+  border: 2px solid black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  height: 70px;
+  width: 14%;
+}
+
+td span {
+  display: block;
+}
+
+.btn{
+  font-size: 2rem;
+  color: inherit;
+}
+
+.current-day {
+  background: linear-gradient(to right, blue, red);
+  color: white;
+}
+
+.day-cell {
+  position: relative;
+  text-align: center;
+}
+
+.event-marker {
+  position: absolute;
+  top: 0;
+  right: 0;
+  animation: blink 1s infinite;
+  cursor: pointer;  
+}
+
+@media (max-width: 768px) {
   .event-marker {
-    position: absolute;
-    top: 1px; /* Position the dot on the top-right corner */
-    right: 1px;
-    width: 20px; /* Increased the size of the dot */
-    height: 20px; /* Increased the size of the dot */
-    border-radius: 50%;
-    animation: blink 1s infinite; /* Make the dot blink */  
+    top: 0;
+    right: 0;
   }
-  
-  @media (max-width: 768px) {
-    .event-marker {
-      top: 2px;
-      right: 2px;
-      width: 8px;
-      height: 8px;
-    }
-  }
+}
 
-  @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.3;
-    }
-    100% {
-      opacity: 1;
-    }
+@keyframes blink {
+  0% {
+    opacity: 1;
   }
-
-  .event-marker{
-    cursor: pointer;
+  50% {
+    opacity: 0.3;
   }
+  100% {
+    opacity: 1;
+  }
+}
