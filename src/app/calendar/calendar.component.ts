@@ -1,4 +1,4 @@
-import { Component , OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import eventsData from '../../assets/sportData.json';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -20,9 +20,9 @@ interface EventsByDate {
 })
 
 
-export class CalendarComponent implements OnInit{
-  currentMonth: string = '';
+export class CalendarComponent{
   currentYear: number = 0;
+  currentMonth: string = '';
   displayedMonthIndex: number = 0;
   daysInMonth: number[] = [];
   firstDayOfMonth: number = 0;
@@ -33,13 +33,27 @@ export class CalendarComponent implements OnInit{
   constructor(private router: Router) { }
   
   ngOnInit(): void {
-    const today = new Date();
-    this.currentYear = today.getFullYear();
-    this.displayedMonthIndex = today.getMonth();
     this.generateCalendar();
     this.loadEvents();
   }
+  
+  generateCalendar() {
+    const today = new Date();
+    console.log('Today:', today);
+    this.currentYear = today.getFullYear();
+    console.log('Current year:', this.currentYear);
+    this.displayedMonthIndex = today.getMonth();
+    console.log('Current month index:', this.displayedMonthIndex);
+    this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
+    this.firstDayOfMonth  = (new Date(this.currentYear, this.displayedMonthIndex, 1).getDay() + 6) % 7;
+    // move to the next month and 0 means last day of the previous month
+    const daysInCurrentMonth = new Date(this.currentYear, this.displayedMonthIndex + 1, 0).getDate();
+    console.log('Days in current month:', daysInCurrentMonth);
+    this.daysInMonth = Array.from({ length: daysInCurrentMonth }, (_, i) => i + 1);
+    console.log('Days in month:', this.daysInMonth);
+  }
 
+  
   loadEvents() {
     this.eventsByDate = {};
     eventsData.events.forEach(event => {
@@ -56,13 +70,6 @@ export class CalendarComponent implements OnInit{
   
   
 
-  generateCalendar() {
-    this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
-    const firstDay = new Date(this.currentYear, this.displayedMonthIndex, 1);
-    this.firstDayOfMonth = (firstDay.getDay() + 6) % 7;
-    const daysInCurrentMonth = new Date(this.currentYear, this.displayedMonthIndex + 1, 0).getDate();
-    this.daysInMonth = Array.from({ length: daysInCurrentMonth }, (_, i) => i + 1);
-  }
 
   getCalendarWeeks(): number[][] {
     const weeks: number[][] = [];

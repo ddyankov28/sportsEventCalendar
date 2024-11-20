@@ -6,7 +6,10 @@
       "time": "18:30",
       "eventType": "Football",
       "teams": "Salzburg vs. Sturm",
-      "location": "Red Bull Arena"
+      "location": "Red Bull Arena",
+      "city": "Salzburg",
+      "competition": "Austrian Bundesliga",
+      "country": "Austria"
     },
     {
       "id": 2,
@@ -14,7 +17,10 @@
       "time": "09:45",
       "eventType": "Ice Hockey",
       "teams": "KAC vs. Capitals",
-      "location": "Stadthalle"
+      "location": "Stadthalle",
+      "city": "Klagenfurt",
+      "competition": "Austrian Ice Hockey League",
+      "country": "Austria"
     },
     {
       "id": 3,
@@ -22,7 +28,10 @@
       "time": "09:45",
       "eventType": "Basketball",
       "teams": "Lakers vs. Celtics",
-      "location": "Staples Center"
+      "location": "Staples Center",
+      "city": "Los Angeles",
+      "competition": "NBA",
+      "country": "USA"
     },
     {
       "id": 4,
@@ -30,7 +39,10 @@
       "time": "19:45",
       "eventType": "Basketball",
       "teams": "Warriors vs. Suns",
-      "location": "Chase Center"
+      "location": "Chase Center",
+      "city": "San Francisco",
+      "competition": "NBA",
+      "country": "USA"
     },
     {
       "id": 5,
@@ -38,7 +50,10 @@
       "time": "23:45",
       "eventType": "Basketball",
       "teams": "Heat vs. Bulls",
-      "location": "American Airlines Arena"
+      "location": "American Airlines Arena",
+      "city": "Miami",
+      "competition": "NBA",
+      "country": "USA"
     }
   ]
 }
