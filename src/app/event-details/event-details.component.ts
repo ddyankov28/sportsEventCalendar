@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import eventsData from '../../assets/sportData.json';
 import { CommonModule } from '@angular/common';
 
-interface Event {
+export interface Event {
   id: number;
   date: string;
   time: string;

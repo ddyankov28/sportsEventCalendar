@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 import * as sportData from '../../assets/sportData.json';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { Event } from '../event-details/event-details.component';
 
 
-interface Event {
-  date: string;
+
+interface EventsInMonth {
+  curDay: number;
+  curMonthIndex: number;
 }
 
-interface EventsByDate {
-  [date: string]: Event[];
-}
+
 @Component({
   selector: 'app-calendar',
   standalone: true,
@@ -27,7 +28,7 @@ export class CalendarComponent{
   daysInMonth: number[] = [];
   firstDayOfMonth: number = 0;
   daysOfWeek: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  eventsByDate: EventsByDate = {};
+  eventsInMonth: EventsInMonth[] = [];
   selectedDate: string = '';
 
   constructor(private router: Router) { }
@@ -42,7 +43,7 @@ export class CalendarComponent{
     this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
     console.log('Current month:', this.currentMonth);
     localStorage.setItem('calendarData', JSON.stringify(sportData));
-    console.log('Data:', sportData);
+    // console.log('Data:', sportData);
     this.generateCalendar();
     this.loadEvents();
   }
@@ -84,15 +85,14 @@ export class CalendarComponent{
     console.log('Events:', parsedData.events);
     parsedData.events.forEach((event: Event) => {
       const eventDate = new Date(event.date);
+      console.log('Event date:', eventDate);
       if (eventDate.getFullYear() === this.currentYear && eventDate.getMonth() === this.displayedMonthIndex){
         const day = eventDate.getDate();
-        if (!this.eventsByDate[day]) {
-          this.eventsByDate[day] = [];
-        }
-        this.eventsByDate[day].push({ date: event.date });
+        const monthIndex = eventDate.getMonth();
+        this.eventsInMonth.push({ curDay: day, curMonthIndex: monthIndex }); 
       }
     });
-    console.log('Events by date:', this.eventsByDate);
+    console.log('Events in month:', this.eventsInMonth);
   }
 
   changeMonth(direction: number) {
@@ -107,18 +107,13 @@ export class CalendarComponent{
     console.log('Current month index:', this.displayedMonthIndex);
     this.generateCalendar();
     this.loadEvents();
-
   }
   
-  hasEvent(day: number): boolean {
-    return this.eventsByDate[day]?.length > 0;
+  hasEvent(day: number, displayedMonthIndex: number): boolean {
+    // The some method tests whether at least one element in the array passes the test implemented by the provided function.
+    return this.eventsInMonth.some(event => event.curDay === day && event.curMonthIndex === displayedMonthIndex);
   }
   
-  
-  getEventDetails(day: number): string {
-    return this.eventsByDate[day].join('\n');
-  }
-
   isCurrentDay(day: number): boolean {
     const today = new Date();
     return day === today.getDate() && this.displayedMonthIndex === today.getMonth() && this.currentYear === today.getFullYear();
