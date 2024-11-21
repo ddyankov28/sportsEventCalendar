@@ -24,11 +24,15 @@ export interface Event {
 export class EventDetailsComponent implements OnInit{
   date: string = '';
   events: Event[] = [];
+  month: number = 0;
+  year: number = 0;
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const date = this.route.snapshot.paramMap.get('date');
+    this.month = Number(this.route.snapshot.queryParamMap.get('month'));
+    this.year = Number(this.route.snapshot.queryParamMap.get('year'));
     console.log('dateFromParam', date);
     if (date) {
       this.date = date;
@@ -45,6 +49,8 @@ export class EventDetailsComponent implements OnInit{
   }
 
   goBack(): void {
-    this.router.navigate(['']);
+    this.router.navigate([''], {
+      queryParams: { month: this.month, year: this.year },
+    });
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as sportData from '../../assets/sportData.json';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from '../event-details/event-details.component';
 
 
@@ -28,22 +28,30 @@ export class CalendarComponent{
   eventsInMonth: EventsInMonth[] = [];
   selectedDate: string = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
   
   ngOnInit(): void {
-    const today = new Date();
-    console.log('Today:', today);
-    this.currentYear = today.getFullYear();
-    console.log('Current year:', this.currentYear);
-    this.displayedMonthIndex = today.getMonth();
-    console.log('Current month index:', this.displayedMonthIndex);
-    this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
-    console.log('Current month:', this.currentMonth);
-    localStorage.setItem('calendarData', JSON.stringify(sportData));
-    // console.log('Data:', sportData);
-    this.generateCalendar();
-    this.loadEvents();
+    this.route.queryParams.subscribe((params) => {
+      const today = new Date();
+  
+      // If query parameters are provided, use them; otherwise, use today's date
+      this.currentYear = params['year'] ? +params['year'] : today.getFullYear();
+      this.displayedMonthIndex = params['month'] ? +params['month'] : today.getMonth();
+  
+      // Set the current month name for display
+      this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
+  
+      // Store initial data in localStorage (only if not already present)
+      if (!localStorage.getItem('calendarData')) {
+        localStorage.setItem('calendarData', JSON.stringify(sportData));
+      }
+  
+      // Generate the calendar view and load events
+      this.generateCalendar();
+      this.loadEvents();
+    });
   }
+  
   
   generateCalendar() {
     this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
@@ -119,6 +127,8 @@ export class CalendarComponent{
   goToEventDetail(day: number): void {
     const selectedDate = `${this.currentYear}-${(this.displayedMonthIndex + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
     console.log('Navigating to:', selectedDate);
-    this.router.navigate(['/events', selectedDate]);
+    this.router.navigate(['/events', selectedDate], {
+      queryParams: { month: this.displayedMonthIndex, year: this.currentYear }
+    });
   }
 }
