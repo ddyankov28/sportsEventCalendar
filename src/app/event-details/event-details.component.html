@@ -1,32 +1,51 @@
 <div class="event-details-container">
-  <button (click)="goBack()" class="btn btn-primary back-button">
+  <!-- Back Button -->
+  <button (click)="goBack()" class="btn btn-outline-primary back-button">
     <i class="bi bi-arrow-left"></i> Back to Calendar
   </button>
-  <h2 class="text-center">Events on {{ date }}</h2>
 
-  <!-- Loop through events for the selected date -->
-  <div *ngFor="let event of events" class="event-card">
-    <div class="event-banner">
-      <h3 class="event-title">{{ event.teams }} - {{ event.eventType }}</h3>
-    </div>
-    
-    <div class="event-info">
-      <div class="event-date-time">
-        <p><i class="bi bi-calendar3"></i> Date: {{ event.date }}</p>
-        <p><i class="bi bi-clock"></i> Time: {{ event.time }}</p>
+  <!-- Page Title -->
+  <h1 class="text-center my-4">Events on {{ date }}</h1>
+
+  <!-- Event Cards Wrapper -->
+  <div class="event-card-wrapper">
+    <!-- Event Cards -->
+    <div *ngFor="let event of events" class="event-card position-relative">
+      <div class="event-header d-flex justify-content-between align-items-center">
+        <h3 class="event-title mb-0">{{ event.teams }}</h3>
+        <span class="badge bg-secondary">{{ event.eventType }}</span>
       </div>
 
-      <div class="event-location">
-        <p><i class="bi bi-geo-alt"></i> Location: {{ event.location }}</p>
+      <div class="event-body mt-3">
+        <!-- Date and Time -->
+        <p class="event-date-time">
+          <i class="bi bi-calendar3"></i> <strong>Date:</strong> {{ event.date }} 
+          <span class="mx-2">|</span>
+          <i class="bi bi-clock"></i> <strong>Time:</strong> {{ event.time }}
+        </p>
+
+        <!-- Location, City, and Country -->
+        <p class="event-location">
+          <i class="bi bi-geo-alt"></i> <strong>Location:</strong> {{ event.location }}, {{ event.city }} 
+          <span class="mx-2">|</span>
+          <strong>Country:</strong> {{ event.country }}
+        </p>
+
+        <!-- Competition -->
+        <p class="event-competition">
+          <i class="bi bi-trophy"></i> <strong>Competition:</strong> {{ event.competition }}
+        </p>
       </div>
 
-      <div class="event-description">
-        <p><strong>Details:</strong> {{ event.time}}</p>
+      <!-- Sport-Specific Icon -->
+      <div class="event-icon">
+        <img [src]="'assets/images/' + event.eventType.toLowerCase() + '.png'" alt="{{ event.eventType }} icon">
       </div>
     </div>
   </div>
-  
-  <div *ngIf="events.length === 0">
+
+  <!-- No Events Message -->
+  <div *ngIf="events.length === 0" class="text-center mt-4">
     <p>No events found for this date.</p>
   </div>
 </div>

@@ -5,12 +5,10 @@ import { Router } from '@angular/router';
 import { Event } from '../event-details/event-details.component';
 
 
-
 interface EventsInMonth {
   curDay: number;
   curMonthIndex: number;
 }
-
 
 @Component({
   selector: 'app-calendar',
@@ -19,7 +17,6 @@ interface EventsInMonth {
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss'
 })
-
 
 export class CalendarComponent{
   currentYear: number = 0;
@@ -82,10 +79,10 @@ export class CalendarComponent{
   loadEvents() {
     const retrievedData = localStorage.getItem('calendarData');
     const parsedData = JSON.parse(retrievedData!);
-    console.log('Events:', parsedData.events);
+    //console.log('Events:', parsedData.events);
     parsedData.events.forEach((event: Event) => {
       const eventDate = new Date(event.date);
-      console.log('Event date:', eventDate);
+      //console.log('Event date:', eventDate);
       if (eventDate.getFullYear() === this.currentYear && eventDate.getMonth() === this.displayedMonthIndex){
         const day = eventDate.getDate();
         const monthIndex = eventDate.getMonth();

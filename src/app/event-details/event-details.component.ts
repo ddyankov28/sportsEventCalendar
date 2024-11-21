@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import eventsData from '../../assets/sportData.json';
 import { CommonModule } from '@angular/common';
 
 export interface Event {
   id: number;
   date: string;
   time: string;
-  teams: string;
   eventType: string;
+  teams: string;
   location: string;
+  city: string;
+  competition: string;
+  country: string;
 }
 
 @Component({
@@ -35,8 +37,11 @@ export class EventDetailsComponent implements OnInit{
   }
   
   loadEventsForDate(): void {
-    this.events = eventsData.events.filter(event => event.date === this.date);
-    console.log('Filtered events:', this.events);
+    const retrievedData = localStorage.getItem('calendarData');
+    const parsedData = JSON.parse(retrievedData!);
+    //console.log('Parsed data:', parsedData.events);
+    this.events = parsedData.events.filter((event: Event) => event.date === this.date);
+    //console.log('Events:', this.events);
   }
 
   goBack(): void {

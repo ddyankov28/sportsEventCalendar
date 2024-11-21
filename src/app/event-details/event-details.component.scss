@@ -1,99 +1,110 @@
-// Container styling
 .event-details-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-
-// Banner with gradient background
-.event-banner {
-  background: linear-gradient(to right, blue, red);
-  padding: 20px;
-  border-radius: 8px 8px 0 0;
-  color: #fff;
-  text-align: center;
-
-  .event-title {
-    font-size: 2rem;
-    font-weight: bold;
-  }
-}
-
-// Info section styling
-.event-info {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  border-radius: 5px;
-  border-color: black;
-  border-style: double;
-
-  // Date and time styling
-  .event-date-time,
-  .event-location {
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    i {
-      font-size: 1.5rem;
-      color: blue;
-    }
-
-    p {
-      margin: 0;
-    }
-  }
-
-  // Description styling
-  .event-description {
-    padding: 10px 0;
-    line-height: 1.6;
-    font-size: 1.1rem;
-    color: black;
-  }
-}
-
-// Responsive styling for mobile devices
-@media (max-width: 600px) {
-  .event-details-container {
-    padding: 15px;
-  }
-
-  .event-banner .event-title {
-    font-size: 1.5rem;
-  }
-
-  .event-info {
-    font-size: 1rem;
-  }
-}
-.event-details-container {
-  animation: fadeIn 0.8s ease-in-out;
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-.event-description:last-of-type{
-  margin-bottom: 100px;
+  top: 0;
 }
 
 .back-button {
+  display: flex;
+  align-items: center;
   margin-bottom: 20px;
-  display: inline-block;
-  font-size: 16px;
+}
+
+.back-button i {
+  margin-right: 8px;
+}
+
+.event-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.3s ease; /* Smooth transition for scaling, box-shadow, and background */
+}
+
+.event-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.1);
+  background-color: aquamarine;
+}
+
+/* Event Header */
+.event-header {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.event-title {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 5px 10px;
+}
+
+.event-body {
+  margin-top: 15px;
+}
+
+.event-date-time,
+.event-location,
+.event-competition {
+  font-size: 1rem;
+  color: #555;
+}
+
+.event-date-time i,
+.event-location i,
+.event-competition i {
+  margin-right: 8px;
+  color: #888;
+}
+
+strong {
+  color: #333;
+}
+
+.event-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+}
+
+.event-icon img {
+  width: 100%;
+  height: auto;
+}
+
+.text-center p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 20px;
+}
+
+@media (max-width: 576px) {
+  .event-card {
+    padding: 15px;
+  }
+
+  .event-title {
+    font-size: 1.25rem;
+  }
+
+  .badge {
+    font-size: 0.8rem;
+  }
+
+  .event-icon {
+    width: 30px;
+    height: 30px;
+  }
 }
