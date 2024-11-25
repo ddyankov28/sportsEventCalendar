@@ -35,7 +35,7 @@ export class EventDetailsComponent implements OnInit{
     const date = this.route.snapshot.paramMap.get('date');
     this.month = Number(this.route.snapshot.queryParamMap.get('month'));
     this.year = Number(this.route.snapshot.queryParamMap.get('year'));
-    console.log('dateFromParam', date);
+    // console.log('dateFromParam', date);
     if (date) {
       this.date = date;
       this.loadEventsForDate();

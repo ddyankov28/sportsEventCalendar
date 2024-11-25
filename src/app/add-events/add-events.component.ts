@@ -46,7 +46,7 @@ export class AddEventsComponent {
     const events = storedData;; 
     const eventsLength = JSON.parse(localStorage.getItem('calendarData') || '0').length;
     const lastId = JSON.parse(localStorage.getItem('calendarData') || '0')[eventsLength - 1].id; 
-    console.log('Last ID:', lastId);
+    // console.log('Last ID:', lastId);
     const newEvent: Event = {
       id: lastId + 1,
       date: this.applyForm.value.eventDate ?? '',

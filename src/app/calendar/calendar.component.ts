@@ -48,7 +48,7 @@ export class CalendarComponent{
         localStorage.setItem('calendarData', JSON.stringify(events));
       }
       else {
-        console.log("LocalStorage already contains calendarData.");
+        // console.log("LocalStorage already contains calendarData.");
       }
   
       // Generate the calendar view and load events
