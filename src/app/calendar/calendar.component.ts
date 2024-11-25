@@ -41,7 +41,17 @@ export class CalendarComponent{
       // Set the current month name for display
       this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
       // console.log("SportData:", events);
-      localStorage.setItem('calendarData', JSON.stringify(events));
+      
+      // Check if 'calendarData' is empty before setting it
+      if (!localStorage.getItem('calendarData')) {
+        // console.log("Initializing SportData:", events);
+        localStorage.setItem('calendarData', JSON.stringify(events));
+      }
+      else {
+        console.log("LocalStorage already contains calendarData.");
+      }
+  
+      // Generate the calendar view and load events
       this.generateCalendar();
       this.loadEvents();
     });

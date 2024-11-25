@@ -64,7 +64,7 @@ export class AddEventsComponent {
     events.push(newEvent);
     storedData.events = events;
     localStorage.setItem('calendarData', JSON.stringify(storedData));
-    //console.log('Updated calendarData:', JSON.parse(localStorage.getItem('calendarData') || '{}'));
+    // console.log('Updated calendarData:', JSON.parse(localStorage.getItem('calendarData') || '{}'));
     this.router.navigate(['/']);
   }
 }
