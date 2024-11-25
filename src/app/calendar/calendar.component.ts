@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as sportData from '../../assets/sportData.json';
+import { events } from '../../assets/sportData.json';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from '../event-details/event-details.component';
@@ -40,10 +40,15 @@ export class CalendarComponent{
   
       // Set the current month name for display
       this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
-  
-      // Store initial data in localStorage (only if not already present)
+      console.log("SportData:", events);
+      
+      // Check if 'calendarData' is empty before setting it
       if (!localStorage.getItem('calendarData')) {
-        localStorage.setItem('calendarData', JSON.stringify(sportData));
+        console.log("Initializing SportData:", events);
+        localStorage.setItem('calendarData', JSON.stringify(events));
+      }
+      else {
+        console.log("LocalStorage already contains calendarData.");
       }
   
       // Generate the calendar view and load events
@@ -86,9 +91,10 @@ export class CalendarComponent{
   
   loadEvents() {
     const retrievedData = localStorage.getItem('calendarData');
+    console.log('Retrieved data:', retrievedData);
     const parsedData = JSON.parse(retrievedData!);
-    //console.log('Events:', parsedData.events);
-    parsedData.events.forEach((event: Event) => {
+    console.log('Events IN LOADING:', parsedData);
+    parsedData.forEach((event: Event) => {
       const eventDate = new Date(event.date);
       //console.log('Event date:', eventDate);
       if (eventDate.getFullYear() === this.currentYear && eventDate.getMonth() === this.displayedMonthIndex){
@@ -97,7 +103,7 @@ export class CalendarComponent{
         this.eventsInMonth.push({ curDay: day, curMonthIndex: monthIndex }); 
       }
     });
-    console.log('Events in month:', this.eventsInMonth);
+    // console.log('Events in month:', this.eventsInMonth);
   }
 
   changeMonth(direction: number) {

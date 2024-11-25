@@ -7,11 +7,13 @@ export interface Event {
   date: string;
   time: string;
   eventType: string;
-  teams: string;
+  homeTeam: string;
+  awayTeam: string;
   location: string;
   city: string;
   competition: string;
   country: string;
+  arenaCapacity: number;
 }
 
 @Component({
@@ -42,9 +44,10 @@ export class EventDetailsComponent implements OnInit{
   
   loadEventsForDate(): void {
     const retrievedData = localStorage.getItem('calendarData');
+
     const parsedData = JSON.parse(retrievedData!);
-    //console.log('Parsed data:', parsedData.events);
-    this.events = parsedData.events.filter((event: Event) => event.date === this.date);
+    // console.log('Parsed data:', parsedData);
+    this.events = parsedData.filter((event: Event) => event.date === this.date);
     //console.log('Events:', this.events);
   }
 

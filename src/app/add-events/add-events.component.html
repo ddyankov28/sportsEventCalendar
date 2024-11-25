@@ -1,0 +1,76 @@
+<div class="event-form-container">
+  <h3>Add Event</h3>
+  <form [formGroup]="applyForm" (ngSubmit)="submitEvent()">
+    <label for="event-date">Event Date</label>
+    <input id="event-date" type="date" formControlName="eventDate" required>
+    <div *ngIf="applyForm.get('eventDate')?.touched && applyForm.get('eventDate')?.invalid" class="error">
+      Event Date is required.
+    </div>
+
+    <label for="event-time">Event Time</label>
+    <input id="event-time" type="time" formControlName="eventTime" required>
+    <div *ngIf="applyForm.get('eventTime')?.touched && applyForm.get('eventTime')?.invalid" class="error">
+      Event Time is required.
+    </div>
+
+    <label for="event-type">Event Type</label>
+    <select id="event-type" formControlName="eventType" required>
+      <option value="" disabled>Select an event type</option>
+      <option value="Football">Football</option>
+      <option value="Basketball">Basketball</option>
+      <option value="Tennis">Tennis</option>
+      <option value="Table-Tennis">Table Tennis</option>
+      <option value="Darts">Darts</option>
+      <option value="Volleyball">Volleyball</option>
+      <option value="Ice-Hockey">Ice Hockey</option>
+      <option value="Baseball">Baseball</option>
+    </select>
+    <div *ngIf="applyForm.get('eventType')?.touched && applyForm.get('eventType')?.invalid" class="error">
+      Event Type is required.
+    </div>
+
+    <label for="home-team">Home Team</label>
+    <input id="home-team" type="text" formControlName="homeTeam" required>
+    <div *ngIf="applyForm.get('homeTeam')?.touched && applyForm.get('homeTeam')?.invalid" class="error">
+      Home Team is required.
+    </div>
+
+    <label for="away-team">Away Team</label>
+    <input id="away-team" type="text" formControlName="awayTeam" required>
+    <div *ngIf="applyForm.get('awayTeam')?.touched && applyForm.get('awayTeam')?.invalid" class="error">
+      Away Team is required.
+    </div>
+
+    <label for="location">Location</label>
+    <input id="location" type="text" formControlName="eventLocation" required>
+    <div *ngIf="applyForm.get('eventLocation')?.touched && applyForm.get('eventLocation')?.invalid" class="error">
+      Location is required.
+    </div>
+
+    <label for="city">City</label>
+    <input id="city" type="text" formControlName="city" required>
+    <div *ngIf="applyForm.get('city')?.touched && applyForm.get('city')?.invalid" class="error">
+      City is required.
+    </div>
+
+    <label for="country">Country</label>
+    <input id="country" type="text" formControlName="country" required>
+    <div *ngIf="applyForm.get('country')?.touched && applyForm.get('country')?.invalid" class="error">
+      Country is required.
+    </div>
+
+    <label for="competition">Competition</label>
+    <input id="competition" type="text" formControlName="competition" required>
+    <div *ngIf="applyForm.get('competition')?.touched && applyForm.get('competition')?.invalid" class="error">
+      Competition is required.
+    </div>
+
+    <label for="arena-capacity">Arena Capacity</label>
+    <input id="arena-capacity" type="number" formControlName="arenaCapacity" required>
+    <div *ngIf="applyForm.get('arenaCapacity')?.touched && applyForm.get('arenaCapacity')?.invalid" class="error">
+      Arena Capacity must be greater than 0.
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="applyForm.invalid">Add Event</button>
+  </form>
+</div>

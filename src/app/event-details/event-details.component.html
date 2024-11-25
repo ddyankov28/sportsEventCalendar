@@ -5,14 +5,14 @@
   </button>
 
   <!-- Page Title -->
-  <h1 class="text-center my-4">Events on {{ date }}</h1>
+  <h1 class="text-center my-4">Events on {{ date | date }}</h1>
 
   <!-- Event Cards Wrapper -->
   <div class="event-card-wrapper">
     <!-- Event Cards -->
     <div *ngFor="let event of events" class="event-card position-relative">
       <div class="event-header d-flex justify-content-between align-items-center">
-        <h3 class="event-title mb-0">{{ event.teams }}</h3>
+        <h3 class="event-title mb-0">{{ event.homeTeam }} vs {{ event.awayTeam}}</h3>
         <span class="badge bg-secondary">{{ event.eventType }}</span>
       </div>
 
@@ -34,6 +34,8 @@
         <!-- Competition -->
         <p class="event-competition">
           <i class="bi bi-trophy"></i> <strong>Competition:</strong> {{ event.competition }}
+          <span class="mx-2">|</span>
+          <strong>Arena Capacity:</strong> {{ event.arenaCapacity }}
         </p>
       </div>
 

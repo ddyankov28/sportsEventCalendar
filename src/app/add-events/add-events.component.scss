@@ -1,0 +1,94 @@
+.event-form-container {
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.event-form-container h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid;
+  padding-bottom: 10px;
+}
+
+.event-form-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.event-form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(to right, blue, red);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+  background-color: #ffe6e6;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#event-type {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .event-form-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .event-form-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .event-form-container input {
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    font-size: 0.9rem;
+  }
+}
