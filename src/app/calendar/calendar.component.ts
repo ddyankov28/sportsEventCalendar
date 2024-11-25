@@ -35,23 +35,13 @@ export class CalendarComponent{
       const today = new Date();
   
       // If query parameters are provided, use them; otherwise, use today's date
-      this.currentYear = params['year'] ? +params['year'] : today.getFullYear();
+      this.currentYear = params['year'] ? + params['year'] : today.getFullYear();
       this.displayedMonthIndex = params['month'] ? +params['month'] : today.getMonth();
   
       // Set the current month name for display
       this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
       // console.log("SportData:", events);
-      
-      // Check if 'calendarData' is empty before setting it
-      if (!localStorage.getItem('calendarData')) {
-        // console.log("Initializing SportData:", events);
-        localStorage.setItem('calendarData', JSON.stringify(events));
-      }
-      else {
-        console.log("LocalStorage already contains calendarData.");
-      }
-  
-      // Generate the calendar view and load events
+      localStorage.setItem('calendarData', JSON.stringify(events));
       this.generateCalendar();
       this.loadEvents();
     });
