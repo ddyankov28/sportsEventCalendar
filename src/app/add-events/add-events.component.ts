@@ -62,17 +62,9 @@ export class AddEventsComponent {
     };
     
     events.push(newEvent);
-
-    // Update the calendarData object
     storedData.events = events;
-    
-    // Save the updated calendarData object back to localStorage
     localStorage.setItem('calendarData', JSON.stringify(storedData));
-    
-    // Debugging: Log the updated calendarData
-    console.log('Updated calendarData:', JSON.parse(localStorage.getItem('calendarData') || '{}'));
-    
-    // Navigate back to the calendar page (or desired route)
+    //console.log('Updated calendarData:', JSON.parse(localStorage.getItem('calendarData') || '{}'));
     this.router.navigate(['/']);
   }
 }

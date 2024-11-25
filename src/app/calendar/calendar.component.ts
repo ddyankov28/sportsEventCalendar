@@ -40,11 +40,11 @@ export class CalendarComponent{
   
       // Set the current month name for display
       this.currentMonth = new Date(this.currentYear, this.displayedMonthIndex).toLocaleString('default', { month: 'long' });
-      console.log("SportData:", events);
+      // console.log("SportData:", events);
       
       // Check if 'calendarData' is empty before setting it
       if (!localStorage.getItem('calendarData')) {
-        console.log("Initializing SportData:", events);
+        // console.log("Initializing SportData:", events);
         localStorage.setItem('calendarData', JSON.stringify(events));
       }
       else {
@@ -63,7 +63,7 @@ export class CalendarComponent{
     this.firstDayOfMonth  = (new Date(this.currentYear, this.displayedMonthIndex, 1).getDay() + 6) % 7;
     // move to the next month and 0 means last day of the previous month
     const daysInCurrentMonth = new Date(this.currentYear, this.displayedMonthIndex + 1, 0).getDate();
-    console.log('Days in current month:', daysInCurrentMonth);
+    // console.log('Days in current month:', daysInCurrentMonth);
     this.daysInMonth = Array.from({ length: daysInCurrentMonth }, (_, i) => i + 1);
   }
   
@@ -91,9 +91,9 @@ export class CalendarComponent{
   
   loadEvents() {
     const retrievedData = localStorage.getItem('calendarData');
-    console.log('Retrieved data:', retrievedData);
+    // console.log('Retrieved data:', retrievedData);
     const parsedData = JSON.parse(retrievedData!);
-    console.log('Events IN LOADING:', parsedData);
+    // console.log('Events IN LOADING:', parsedData);
     parsedData.forEach((event: Event) => {
       const eventDate = new Date(event.date);
       //console.log('Event date:', eventDate);
@@ -115,7 +115,7 @@ export class CalendarComponent{
       this.displayedMonthIndex = 0;
       this.currentYear += 1;
     }
-    console.log('Current month index:', this.displayedMonthIndex);
+    // console.log('Current month index:', this.displayedMonthIndex);
     this.generateCalendar();
     this.loadEvents();
   }
@@ -132,7 +132,7 @@ export class CalendarComponent{
 
   goToEventDetail(day: number): void {
     const selectedDate = `${this.currentYear}-${(this.displayedMonthIndex + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-    console.log('Navigating to:', selectedDate);
+    // console.log('Navigating to:', selectedDate);
     this.router.navigate(['/events', selectedDate], {
       queryParams: { month: this.displayedMonthIndex, year: this.currentYear }
     });
