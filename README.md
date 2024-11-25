@@ -2,6 +2,35 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
 
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+1. **Node.js**  
+   Download and install Node.js from [nodejs.org](https://nodejs.org).  
+   Recommended version: **LTS (Long-Term Support)**.
+
+2. **npm**  
+   npm is installed automatically with Node.js. Use the following command to verify the installation:
+
+   ```bash
+   npm -v
+
+3. **npm install**
+    Install Dependencies: Run the following command in the project root to install all required dependencies:
+
+    ```bash
+    npm install
+
+4. **Angular CLI**
+    Install Angular CLI (if not installed globally):
+    If you haven't installed Angular CLI globally, run the following command:
+
+    ```bash
+    npm install -g @angular/cli
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
