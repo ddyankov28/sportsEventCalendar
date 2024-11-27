@@ -194,6 +194,19 @@
       "country": "Italy",
       "competition": "European Championship",
       "arenaCapacity": 11346
+    },
+    {
+      "id": 16,
+      "date": "2024-11-29",
+      "time": "13:00",
+      "eventType": "Table-Tennis",
+      "homeTeam": "Drucilla",
+      "awayTeam": "Leonardo",
+      "location": "Table Tennis Room",
+      "city": "Vienna",
+      "country": "Austria",
+      "competition": "42 Tournament",
+      "arenaCapacity": 50
     }
   ]
 }
